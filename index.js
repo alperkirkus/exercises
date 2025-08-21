@@ -23,12 +23,17 @@ const getProducts = async () => {
     if(!response) throw new Error("No response");
 
      products.forEach(product => {
+
+      const mainImage = `https://res.cloudinary.com/duclexxtz/image/fetch/${product.images[0]}`;
+      const hoverImage = `https://res.cloudinary.com/duclexxtz/image/fetch/${product.images[1] || product.images[0]}`;
+
+
     
         const html = `
         <div class="product-card">
         <div class="img-wrapper">
-          <img src="product${product.id}image1.jpeg" class="img-main" alt="${product.title}">
-          <img src="product${product.id}image2.jpeg" class="img-hover" alt="${product.title}">
+          <img src="${mainImage}" class="img-main" alt="${product.title}">
+          <img src="${hoverImage}" class="img-hover" alt="${product.title}">
         </div>
         <div class="product-info">
           <div class="product-category">${product.category.name}</div>
@@ -119,8 +124,8 @@ const renderTabbedComponent = (products) => {
                     <div class="product-price">$${product.price}</div>
          </div>
             <div class="tabbed-img-wrapper">
-          <img src="product${product.id}image1.jpeg" class="img-1" alt="Product image 1">
-          <img src="product${product.id}image2.jpeg" class="img-2" alt="Product image 2">
+          <img src="product1image1.jpeg" class="img-1" alt="Product image 1">
+          <img src="product1image2.jpeg" class="img-2" alt="Product image 2">
         </div>
          
 
